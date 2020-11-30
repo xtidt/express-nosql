@@ -2,7 +2,7 @@ $('#btn1').on('click', () => {
   $.ajax({
     type: 'GET',
     contentType: 'application/x-www-form-urlencoded',
-    url: '/users/view',
+    url: '/api/users/view',
     data: {
       user: $('#view-user').val()
     },
@@ -16,7 +16,7 @@ $('#btn2').on('click', () => {
   $.ajax({
     type: 'POST',
     contentType: 'application/x-www-form-urlencoded',
-    url: '/users/add',
+    url: '/api/users/add',
     data: {
       user: $('#add-user').val(),
       pwd: $('#add-pwd').val()
@@ -31,7 +31,7 @@ $('#btn3').on('click', () => {
   $.ajax({
     type: 'POST',
     contentType: 'application/x-www-form-urlencoded',
-    url: '/users/update',
+    url: '/api/users/update',
     data: {
       user: $('#update-user').val(),
       pwd: $('#update-pwd').val()
@@ -46,7 +46,7 @@ $('#btn4').on('click', () => {
   $.ajax({
     type: 'DELETE',
     contentType: 'application/x-www-form-urlencoded',
-    url: '/users/delete',
+    url: '/api/users/delete',
     data: {
       user: $('#delete-user').val()
     },
