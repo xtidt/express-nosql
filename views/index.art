@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="http://lib.baomitu.com/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://lib.baomitu.com/jsoneditor/9.1.4/jsoneditor.min.css">
+    <script src="http://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://lib.baomitu.com/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script src="http://lib.baomitu.com/jsoneditor/9.1.4/jsoneditor.min.js"></script> 
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <p>Welcome to {{title}}</p>
+    <!-- 分类 -->
+    <div class="accordion" id="accordion">
+      <div class="card">
+        <div class="card-header" id="heading1">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              查询
+            </button>
+          </h2>
+        </div>
+    
+        <div id="collapseOne" class="collapse show" aria-labelledby="heading1" data-parent="#accordion">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="add-user">user</label>
+              <input type="text" class="form-control" id="view-user">
+            </div>
+            <button type="button" class="btn btn-primary" id="btn1">查询</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="heading2">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              新增
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="add-user">user</label>
+              <input type="text" class="form-control" id="add-user">
+            </div>
+            <div class="form-group">
+              <label for="add-pwd">pwd</label>
+              <input type="text" class="form-control" id="add-pwd">
+            </div>
+            <button type="button" class="btn btn-primary" id="btn2">新增</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="heading3">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              更新
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="add-user">user</label>
+              <input type="text" class="form-control" id="update-user">
+            </div>
+            <div class="form-group">
+              <label for="add-pwd">pwd</label>
+              <input type="text" class="form-control" id="update-pwd">
+            </div>
+            <button type="button" class="btn btn-primary" id="btn3">更新</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="heading4">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+              删除
+            </button>
+          </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="add-user">user</label>
+              <input type="text" class="form-control" id="delete-user">
+            </div>
+            <button type="button" class="btn btn-primary" id="btn4">删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jsoneditor" style="width: 400px; height: 400px; margin-top: 20px;"></div>
+    <script src="/javascripts/modules/index.js"></script>
+  </body>
+</html>
