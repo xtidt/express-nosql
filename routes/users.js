@@ -21,52 +21,49 @@ router.get('/view', async function (req, res) {
 
 router.get('/name', async function (req, res) {
   const file = './db/1.json'
-  let result = JSON.parse(fs.readFileSync(file).toString());
+  const copy = JSON.parse(fs.readFileSync(file).toString())
   /*
     find() 方法返回通过测试（ 函数内判断） 的数组的第一个元素的值。
     如果没有符合条件的元素返回 undefined
     find() 对于空数组， 函数是不会执行的。
     find() 并没有改变数组的原始值。 
   */
-  result = result.find(item => item.user == req.query.name);
+  const result = copy.find((item) => item.user == req.query.name)
   res.json({
-      code: 200,
-      info: result ? result : {},
-  });
+    code: 200,
+    info: result ? result : {}
+  })
 })
 
 // 新增
 router.post('/add', async function (req, res) {
+  const file = './db/1.json'
   //插入数据
-  const result = await AccountModel.insertMany({
-    user: req.body.user,
-    pwd: req.body.pwd
+  let copy = JSON.parse(fs.readFileSync(file).toString())
+  copy.push({
+    id: Date.now(),
+    ...req.body
   })
-  console.log(result)
-  res.send(200, result)
-})
-
-// 新增:create
-router.post('/create', async function (req, res) {
-  //插入数据
-  const result = await AccountModel.create({
-    user: req.body.user,
-    pwd: req.body.pwd
+  fs.writeFileSync(file, JSON.stringify(copy))
+  res.json({
+    code: 200,
+    msg: '数据存储成功'
   })
-  console.log(result)
-  res.send(200, result)
 })
 
 // 删除
 router.delete('/delete', async function (req, res) {
+  const file = './db/1.json'
   // 删除单个
-  const result = await AccountModel.findOneAndDelete({
-    user: req.body.user
+  let copy = JSON.parse(fs.readFileSync(file).toString())
+  const index = copy.findIndex((item) => item.user == req.params.user)
+
+  copy.splice(index, 1)
+  fs.writeFileSync(file, JSON.stringify(copy))
+  res.json({
+    code: 200,
+    msg: '信息删除成功'
   })
-  console.log(result)
-  // 删除多个(或所有)
-  // AccountModel.deleteMany({}).then(result => console.log(result))
-  res.send(200, result)
 })
 
 // 更新
