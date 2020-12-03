@@ -62,24 +62,24 @@ router.delete('/delete', async function (req, res) {
   fs.writeFileSync(file, JSON.stringify(copy))
   res.json({
     code: 200,
-    msg: '信息删除成功'
+    msg: '数据删除成功'
   })
 })
 
 // 更新
 router.post('/update', async function (req, res) {
   const _user = req.body.user
-  const _pwd = req.body.pwd
-  const result = await AccountModel.updateOne(
-    { user: _user },
-    {
-      pwd: _pwd
-    }
-  )
-  console.log(result)
-  // 更新多个
-  // User.updateMany({查询条件}, {要更改的值}).then(result => console.log(result))
-  res.send(200, result)
+  const file = './db/1.json'
+  const copy = JSON.parse(fs.readFileSync(file).toString());
+  const index = copy.findIndex(item => item.user === _user);
+  copy[index] = {
+    ...req.body
+  };
+    fs.writeFileSync(file, JSON.stringify(copy));
+    res.json({
+        code: 200,
+        msg: '数据修改成功'
+    });
 })
 
 module.exports = router
